@@ -9,17 +9,17 @@ import org.springframework.stereotype.Service;
 public class CitaMedica {
 	private LocalDateTime fechaCita;
 	
-	@Autowired
+	//@Autowired
 	private Doctor doctor;
 	
-	@Autowired
+	//@Autowired
 	private Paciente paciente;
 	
 	//2) Inyeccion de dependencia (DI) por constructor
-	public CitaMedica(Doctor doctor, Paciente paciente) {
+	/*public CitaMedica(Doctor doctor, Paciente paciente) {
 		this.doctor = doctor;
 		this.paciente = paciente;
-	}
+	}*/
 	
 	public String agendar(LocalDateTime fechaCita, String nombre, String apellido, int edad, String ciudad, String nombrePaciente, int edadPaciente) {
 		
