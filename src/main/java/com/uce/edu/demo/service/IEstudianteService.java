@@ -1,6 +1,6 @@
 package com.uce.edu.demo.service;
 
-import com.uce.edu.demo.matriculacion.Estudiante;
+import com.uce.edu.demo.modelo.Estudiante;
 
 public interface IEstudianteService {
 	
