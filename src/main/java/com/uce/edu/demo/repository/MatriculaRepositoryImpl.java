@@ -25,13 +25,13 @@ public class MatriculaRepositoryImpl implements IMatriculaRepository {
 	@Override
 	public void actualizar(Matricula m) {
 		// TODO Auto-generated method stub
-		System.out.println("Se ha insertado en la base la matricula: " + m);
+		System.out.println("Se ha actualizado en la base la matricula: " + m);
 	}
 
 	@Override
 	public void eliminar(String numero) {
 		// TODO Auto-generated method stub
-		System.out.println("Se ha insertado en la base la matricula: " + numero);
+		System.out.println("Se ha eliminado en la base la matricula: " + numero);
 	}
 
 }
