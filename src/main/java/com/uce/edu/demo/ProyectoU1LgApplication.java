@@ -1,27 +1,23 @@
 package com.uce.edu.demo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.demo.modelo.Estudiante;
-import com.uce.edu.demo.modelo.Materia;
-import com.uce.edu.demo.modelo.Matricula;
-import com.uce.edu.demo.service.IMateriaService;
-import com.uce.edu.demo.service.IMatriculaService;
+import com.uce.edu.demo.banco.service.IDepositoService;
+import com.uce.edu.demo.banco.service.ITransferenciaService;
 
 @SpringBootApplication
 public class ProyectoU1LgApplication implements CommandLineRunner {
 	
 	@Autowired
-	private IMateriaService materiaService;
+	private ITransferenciaService iTransferenciaService;
 	
 	@Autowired
-	private IMatriculaService matriculaService;
+	private IDepositoService depositoService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1LgApplication.class, args);
@@ -30,48 +26,10 @@ public class ProyectoU1LgApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		System.out.println("Materia");
+		this.iTransferenciaService.realizarTransferencia("12", "13", new BigDecimal(20));
 		
-		Materia m = new Materia();
-		m.setNombre("Inteligencia Artificial");
-		m.setSemestre("Sexto");
+		this.depositoService.realizarDeposito("14", new BigDecimal(50));
 		
-		this.materiaService.insertarMateria(m);
-		
-		this.materiaService.buscarPorNombre("Inteligencia Artificial");
-		
-		m.setNombre("Programacion Avanzada II");
-		this.materiaService.actualizarMateria(m);
-		
-		this.materiaService.borrarMateria("Programacion Avanzada II");
-		
-		System.out.println("Matricula");
-		
-		Estudiante e = new Estudiante();
-		e.setNombre("Lenin");
-		e.setApellido("Guananga");
-		e.setCedula("1750368084");
-		
-		Materia m1 = new Materia();
-		m1.setNombre("Redes y Protocolos de Comunicación");
-		m1.setSemestre("Sexto");
-		
-		List<Materia> lista = new ArrayList<Materia>();
-		lista.add(m);
-		lista.add(m1);
-		Matricula mtr = new Matricula();
-		mtr.setNumero("55497226");
-		mtr.setEstudiante(e);
-		mtr.setMateria(lista);
-		
-		this.matriculaService.insertarMatricula(mtr);
-		
-		this.matriculaService.buscarPorNumero("55497226");
-		
-		mtr.setNumero("49863326");
-		this.matriculaService.actualizarMatricula(mtr);
-		
-		this.matriculaService.borrarMatricula("49863326");
 	}
 
 }
