@@ -29,10 +29,29 @@ public class DepositoServiceImpl implements IDepositoService {
 		this.bancariaService.actualizar(ctaDestino);
 		
 		Deposito deposito = new Deposito();
+		deposito.setId("4452");
 		deposito.setFecha(LocalDateTime.now());
 		deposito.setNumeroCuentaDestino(numeroCtaDestino);
 		deposito.setMonto(monto);
 		this.depositoRepository.insertarDeposito(deposito);
+	}
+
+	@Override
+	public Deposito buscarDeposito(String id) {
+		// TODO Auto-generated method stub
+		return this.depositoRepository.buscar(id);
+	}
+
+	@Override
+	public void actualizarDeposito(Deposito d) {
+		// TODO Auto-generated method stub
+		this.depositoRepository.actualizar(d);
+	}
+
+	@Override
+	public void eliminarDeposito(String id) {
+		// TODO Auto-generated method stub
+		this.depositoRepository.eliminar(id);
 	}
 
 }

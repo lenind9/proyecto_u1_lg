@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class Transferencia {
+	private String id;
 	private String numeroCuentaOrigen;
 	private String numerocuentaDestino;
 	private BigDecimal montoTransferir;
@@ -11,7 +12,7 @@ public class Transferencia {
 	
 	@Override
 	public String toString() {
-		return "Transferencia [numeroCuentaOrigen=" + numeroCuentaOrigen + ", numerocuentaDestino="
+		return "Transferencia [id=" + id + ", numeroCuentaOrigen=" + numeroCuentaOrigen + ", numerocuentaDestino="
 				+ numerocuentaDestino + ", montoTransferir=" + montoTransferir + ", fechaTransferencia="
 				+ fechaTransferencia + "]";
 	}
@@ -40,6 +41,14 @@ public class Transferencia {
 	}
 	public void setFechaTransferencia(LocalDateTime fechaTransferencia) {
 		this.fechaTransferencia = fechaTransferencia;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 }
