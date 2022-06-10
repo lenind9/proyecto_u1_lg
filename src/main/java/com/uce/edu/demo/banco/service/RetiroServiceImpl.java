@@ -22,11 +22,11 @@ public class RetiroServiceImpl implements IRetiroService {
 	@Override
 	public void realizarRetiro(String numeroCuenta, BigDecimal monto) {
 		// TODO Auto-generated method stub
-		CuentaBancaria ctaDestino = this.bancariaService.buscar(numeroCuenta);
-		BigDecimal saldoCtaDestino = ctaDestino.getSaldo();
-		BigDecimal saldoFinal = saldoCtaDestino.subtract(monto);
-		ctaDestino.setSaldo(saldoFinal);
-		this.bancariaService.actualizar(ctaDestino);
+		CuentaBancaria cuenta = this.bancariaService.buscar(numeroCuenta);
+		BigDecimal saldoCuenta = cuenta.getSaldo();
+		BigDecimal saldoFinal = saldoCuenta.subtract(monto);
+		cuenta.setSaldo(saldoFinal);
+		this.bancariaService.actualizar(cuenta);
 		
 		Retiro retiro = new Retiro();
 		retiro.setId("1564");
