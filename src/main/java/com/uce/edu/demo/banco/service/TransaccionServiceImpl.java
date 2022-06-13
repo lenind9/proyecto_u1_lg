@@ -61,7 +61,7 @@ public class TransaccionServiceImpl implements ITransaccionService {
 		List<Deposito> listaDepo = this.depositoRepository.consultar(cuenta, fechaInicio, fechaFin);
 		List<Retiro> listaReti = this.iRetiroRepository.consultar(cuenta, fechaInicio, fechaFin);
 		
-		//Vamos a unir todas las listas en una unica lsita
+		//Vamos a unir todas las listas en una unica lista
 		List<TransaccionTo> listaFinal = new ArrayList<>();
 		
 		for(Transferencia t:listaTrans) {
