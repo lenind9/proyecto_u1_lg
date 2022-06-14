@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.uce.edu.demo.banco.modelo.CuentaBancaria;
@@ -13,8 +14,9 @@ import com.uce.edu.demo.banco.repository.IRetiroRepository;
 @Service
 public class RetiroServiceImpl implements IRetiroService {
 	
-	@Autowired
-	private ICuentaBancariaService bancariaService;
+	//@Autowired
+	//@Qualifier("ahorro")
+	//private ICuentaBancariaService bancariaService;
 	
 	@Autowired
 	private IRetiroRepository retiroRepository;
@@ -22,7 +24,7 @@ public class RetiroServiceImpl implements IRetiroService {
 	@Override
 	public void realizarRetiro(String numeroCuenta, BigDecimal monto) {
 		// TODO Auto-generated method stub
-		CuentaBancaria cuenta = this.bancariaService.buscar(numeroCuenta);
+		/*CuentaBancaria cuenta = this.bancariaService.buscar(numeroCuenta);
 		BigDecimal saldoCuenta = cuenta.getSaldo();
 		BigDecimal saldoFinal = saldoCuenta.subtract(monto);
 		cuenta.setSaldo(saldoFinal);
@@ -33,7 +35,7 @@ public class RetiroServiceImpl implements IRetiroService {
 		retiro.setFecha(LocalDateTime.now());
 		retiro.setNumeroCuenta(numeroCuenta);
 		retiro.setMonto(monto);
-		this.retiroRepository.insertarRetiro(retiro);
+		this.retiroRepository.insertarRetiro(retiro);*/
 	}
 
 	@Override
