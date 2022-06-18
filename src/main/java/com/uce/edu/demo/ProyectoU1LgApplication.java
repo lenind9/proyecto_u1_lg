@@ -1,33 +1,36 @@
 package com.uce.edu.demo;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.demo.vuelo.modelo.Persona;
-import com.uce.edu.demo.vuelo.modelo.Vuelo;
-import com.uce.edu.demo.vuelo.modelo.VueloInternacional;
-import com.uce.edu.demo.vuelo.modelo.VueloNacional;
-import com.uce.edu.demo.vuelo.service.IVueloService;
+import com.uce.edu.demo.modelo.Estudiante;
+import com.uce.edu.demo.modelo.Materia;
+import com.uce.edu.demo.modelo.Matricula;
+import com.uce.edu.demo.modelo.ProfesorGeneral;
+import com.uce.edu.demo.modelo.ProfesorMateria;
+import com.uce.edu.demo.service.IMatriculaService;
 
 @SpringBootApplication
 public class ProyectoU1LgApplication implements CommandLineRunner {
 	
 	@Autowired
-	private VueloNacional nacional;
-	
+	private ProfesorGeneral general;
+
 	@Autowired
-	private VueloNacional nacional1;
-	
+	private ProfesorGeneral general1;
+
 	@Autowired
-	private VueloInternacional internacional;
-	
+	private ProfesorMateria materia;
+
 	@Autowired
-	private VueloInternacional internacional1;
-	
+	private ProfesorMateria materia1;
+
 	@Autowired
-	private IVueloService iVueloService;
+	private IMatriculaService iMatriculaService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1LgApplication.class, args);
@@ -37,36 +40,33 @@ public class ProyectoU1LgApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 		System.out.println("EJEMPLO SINGLETON");
-		this.nacional.setOrigen("Quito");
-		this.nacional.setDestino("Guayaquil");
-		
-		System.out.println(this.nacional);
-		
+		this.general.setNombre("Lenin");
+		this.general.setApellido("Guananga");
+
+		System.out.println(this.general);
+
 		System.out.println("---------------");
-		System.out.println(this.nacional1);
-		this.nacional.setDestino("Cuenca");
+		System.out.println(this.general1);
+		this.general.setNombre("Pepito");
 		System.out.println("---------------");
-		System.out.println(this.nacional1);
-		
+		System.out.println(this.general);
+
 		System.out.println("---------------");
-		System.out.println(this.nacional1);
-		
-		System.out.println("\nEJEMPLO PROTOTYPE");
-		this.internacional.setOrigen("Guayaquil");
-		this.internacional.setDestino("Santiago de Chile");
-		System.out.println(this.internacional);
+		System.out.println(this.general1);
+
+		System.out.println("EJEMPLO PROTOTYPE");
+		this.materia.setNombre("Daniel");
+		this.materia.setApellido("Teran");
+		System.out.println(this.materia);
 		System.out.println("---------------");
-		System.out.println(this.internacional1 + "\n");
-		
-		Vuelo vuelo1 = new Vuelo();
-		Persona persona1 = new Persona();
-		vuelo1.setNumero("156432");
-		persona1.setCedula("1724116498");
-		persona1.setNombre("Lenin");
-		persona1.setApellido("Guananga");
-		vuelo1.setPersona(persona1);
-		
-		this.iVueloService.crearVuelo(vuelo1);
+		System.out.println(this.materia1);
+
+		Matricula matricula1 = new Matricula();
+		matricula1.setEstudiante(new Estudiante());
+		matricula1.setMateria(new ArrayList<Materia>());
+		matricula1.setNumero("13123");
+
+		this.iMatriculaService.crearMatricula(matricula1);
 		
 	}
 
